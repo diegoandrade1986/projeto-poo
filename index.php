@@ -3,7 +3,6 @@
     <head>
         <title>POO</title>
         <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-        <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
         <meta name="viewport" content="width=device-width, initial-scale=1 ">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
