@@ -10,7 +10,6 @@ $(function(){/*
     $("input[type='button']").click(function(){
         var indice = $(this).parent().siblings(".chave").text();
         $.post('visualizaCliente.php', {indice: indice}, function(retorno){
-            //$("#modalCliente").modal({ backdrop: 'static' });
             $("#dadosCliente").html(retorno);
             $('#myModal').modal('show');
         });
