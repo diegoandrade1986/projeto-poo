@@ -8,10 +8,10 @@
  */
 class Cliente
 {
-    private $nome;
-    private $idade;
-    private $cpf;
-    private $endereco;
+    protected $nome;
+    protected $idade;
+    protected $cpf;
+    protected $endereco;
 
     /**
      * @return mixed
@@ -91,13 +91,5 @@ class Cliente
         $this->endereco = $endereco;
     }
 
-    public function asc($array)
-    {
-        //us$array;
-    }
-    public function dadosCliente($indice)
-    {
-        $this->setNome($this->array[$indice]->nome);
-    }
 
 }
