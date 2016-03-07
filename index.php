@@ -13,6 +13,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
                     <li><a href="listaCliente.php">Fase 1</a></li>
+                    <li><a href="listaCliente_2.php">Fase 2</a></li>
                 </ul>
             </div>
         </nav>
