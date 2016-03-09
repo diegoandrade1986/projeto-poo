@@ -1,19 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: diego
- * Date: 04/03/16
- * Time: 10:58
- */
+# Funcao autoloader no Linux
+define('CLASS_DIR','../src/');
+set_include_path(get_include_path().PATH_SEPARATOR.CLASS_DIR);
+spl_autoload_register(function ($class) {
+    require_once(str_replace('\\', '/', $class . '.php'));
+});
 
-//require_once 'class/InterfaceCliente.php';
-//require_once 'interface/InterfaceCliente.php';
-//require_once 'class/ClienteFisico.php';
-//require_once 'class/ClienteJuridico.php';
-require_once '../src/Andrade/Cliente/Cliente.php';
-require_once '../src/Andrade/Cliente/interface/InterfaceCliente.php';
-require_once '../src/Andrade/Cliente/Types/ClienteFisico.php';
-require_once '../src/Andrade/Cliente/Types/ClienteJuridico.php';
+use Andrade\Cliente3\Types\ClienteFisico3 as ClienteFisico;
+use Andrade\Cliente3\Types\ClienteJuridico3 as ClienteJuridico;
 
 $clientes = array(
     0 => new ClienteFisico("Diego Andrade",29, "123.456.789-88", "Rua 1, nº 123 - SP","RUA ALGO",1),
@@ -50,7 +44,7 @@ if (isset($_POST['desc'])) krsort($clientes);
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home </a></li>
                     <li><a href="listaCliente.php">Fase 1</a></li>
-                    <li class="active"><a href="listaCliente_2.php">Fase 2</a></li>
+                    <li><a href="listaCliente_2.php">Fase 2</a></li>
                     <li class="active"><a href="listaCliente_3.php">Fase 3<span class="sr-only">(current)</span></a></li>
                 </ul>
             </div>

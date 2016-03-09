@@ -5,16 +5,17 @@
  * Date: 04/03/16
  * Time: 15:02
  */
-	$indice = filter_input(INPUT_POST, 'indice', FILTER_SANITIZE_NUMBER_INT);
-//    require_once 'class/Cliente.php';
-//    require_once 'interface/InterfaceCliente.php';
-//    require_once 'class/ClienteFisico.php';
-//    require_once 'class/ClienteJuridico.php';
-    require_once '../src/Andrade/Cliente/Cliente.php';
-    require_once '../src/Andrade/Cliente/interface/InterfaceCliente.php';
-    require_once '../src/Andrade/Cliente/Types/ClienteFisico.php';
-    require_once '../src/Andrade/Cliente/Types/ClienteJuridico.php';
+    # Funcao autoloader no Linux
+    define('CLASS_DIR','../src/');
+    set_include_path(get_include_path().PATH_SEPARATOR.CLASS_DIR);
+    spl_autoload_register(function ($class) {
+        require_once(str_replace('\\', '/', $class . '.php'));
+    });
 
+    use Andrade\Cliente3\Types\ClienteFisico3 as ClienteFisico;
+    use Andrade\Cliente3\Types\ClienteJuridico3 as ClienteJuridico;
+
+	$indice = filter_input(INPUT_POST, 'indice', FILTER_SANITIZE_NUMBER_INT);
     $clientes = array(
         0 => new ClienteFisico("Diego Andrade",29, "123.456.789-88", "Rua 1, nº 123 - SP","RUA ALGO",1),
         1 => new ClienteJuridico("Vanita",25, "789.541.369-01", "Rua 2, nº 222 - SP","RUA ALGO 2",2),
