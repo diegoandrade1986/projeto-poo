@@ -6,10 +6,14 @@
  * Time: 15:02
  */
 	$indice = filter_input(INPUT_POST, 'indice', FILTER_SANITIZE_NUMBER_INT);
-    require_once 'class/Cliente.php';
-    require_once 'interface/Cliente.php';
-    require_once 'class/ClienteFisico.php';
-    require_once 'class/ClienteJuridico.php';
+//    require_once 'class/Cliente.php';
+//    require_once 'interface/InterfaceCliente.php';
+//    require_once 'class/ClienteFisico.php';
+//    require_once 'class/ClienteJuridico.php';
+    require_once '../src/Andrade/Cliente/Cliente.php';
+    require_once '../src/Andrade/Cliente/interface/InterfaceCliente.php';
+    require_once '../src/Andrade/Cliente/Types/ClienteFisico.php';
+    require_once '../src/Andrade/Cliente/Types/ClienteJuridico.php';
 
     $clientes = array(
         0 => new ClienteFisico("Diego Andrade",29, "123.456.789-88", "Rua 1, nº 123 - SP","RUA ALGO",1),

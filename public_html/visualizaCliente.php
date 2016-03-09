@@ -5,7 +5,8 @@
  * Date: 04/03/16
  * Time: 15:02
  */
-	require_once 'class/Cliente.php';
+	//require_once 'class/InterfaceCliente.php';
+    require_once '../src/Andrade/Cliente/Cliente.php';
     $indice = filter_input(INPUT_POST, 'indice', FILTER_SANITIZE_NUMBER_INT);
     $clientes = array(
         0 => new Cliente("Diego Andrade",29, "123.456.789-88", "Rua 1, nº 123 - SP"),
