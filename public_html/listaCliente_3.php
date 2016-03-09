@@ -50,8 +50,8 @@ if (isset($_POST['desc'])) krsort($clientes);
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home </a></li>
                     <li><a href="listaCliente.php">Fase 1</a></li>
-                    <li class="active"><a href="listaCliente_2.php">Fase 2<span class="sr-only">(current)</span></a></li>
-                    <li><a href="listaCliente_3.php">Fase 3</a></li>
+                    <li class="active"><a href="listaCliente_2.php">Fase 2</a></li>
+                    <li class="active"><a href="listaCliente_3.php">Fase 3<span class="sr-only">(current)</span></a></li>
                 </ul>
             </div>
         </nav>
