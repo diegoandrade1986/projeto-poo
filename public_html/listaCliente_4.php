@@ -6,11 +6,29 @@ spl_autoload_register(function ($class) {
     require_once(str_replace('\\', '/', $class . '.php'));
 });
 
-use Andrade\Cliente3\Types\ClienteFisico3 as ClienteFisico;
-use Andrade\Cliente3\Types\ClienteJuridico3 as ClienteJuridico;
+use Andrade\Cliente4\Types\ClienteFisico4 as ClienteFisico;
+use Andrade\Cliente4\Types\ClienteJuridico4 as ClienteJuridico;
+use Andrade\Db\Conectar;
+use Andrade\Cliente4\CrudClient;
 
-$clientes = array(
-    0 => new ClienteFisico("Diego Andrade",29, "123.456.789-88", "Rua 1, nº 123 - SP","RUA ALGO",1),
+$crud = new CrudClient(Conectar::getConexao());
+//var_dump(Conectar::getConexao());
+$dados = $crud->listaCliente();
+$clientes = array();
+if($dados){
+    foreach($dados as $d){
+        if ($d->tipocliente == "PF"){
+            $clientes[] = array(new ClienteFisico($d->id,$d->nome,$d->idade, $d->cpf, $d->endereco,$d->endereco_entrega,$d->importancia));
+        }else{
+            $clientes[] = array(new ClienteJuridico($d->id,$d->nome,$d->idade, $d->cpf, $d->endereco,$d->endereco_entrega,$d->importancia));
+        }
+    }
+}
+/*echo "<pre>";
+var_dump($clientes);*/
+
+
+    /*0 => new ClienteFisico("Diego Andrade",29, "123.456.789-88", "Rua 1, nº 123 - SP","RUA ALGO",1),
     1 => new ClienteJuridico("Vanita",25, "789.541.369-01", "Rua 2, nº 222 - SP","RUA ALGO 2",2),
     2 => new ClienteFisico("Maria",23, "987.741.364-05", "Rua 3, nº 333 - SP","RUA ALGO 3",3),
     3 => new ClienteJuridico("João", 32,"854.001.140-01", "Rua 4, nº 444 - SP","RUA ALGO 4",4),
@@ -20,7 +38,7 @@ $clientes = array(
     7 => new ClienteJuridico("Carlos",47, "103.054.193-01", "Rod. 8, nº 888 - SP","",4),
     8 => new ClienteFisico("Carla",55,"123.789.257-79", "Rua 9, nº 999 - SP","",3),
     9 => new ClienteJuridico("Debora",60, "231.321.412-01", "Rua 10, nº 1010 - SP","",2)
-);
+);*/
 
 if (isset($_POST['asc'])) ksort($clientes);
 if (isset($_POST['desc'])) krsort($clientes);
@@ -45,7 +63,8 @@ if (isset($_POST['desc'])) krsort($clientes);
                     <li><a href="index.php">Home </a></li>
                     <li><a href="listaCliente.php">Fase 1</a></li>
                     <li><a href="listaCliente_2.php">Fase 2</a></li>
-                    <li class="active"><a href="listaCliente_3.php">Fase 3<span class="sr-only">(current)</span></a></li>
+                    <li><a href="listaCliente_3.php">Fase 3</a></li>
+                    <li class="active"><a href="listaCliente_4.php">Fase 4<span class="sr-only">(current)</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -63,12 +82,14 @@ if (isset($_POST['desc'])) krsort($clientes);
                 <th><b>Visuzalizar</b></th>
             </tbody>
             <?php
-            foreach ($clientes as $key=>$value){
-                echo "<tr><td class='chave'>{$key}</td>";
-                echo "<td>{$value->getNome()}</td>";
-                echo "<td>{$value->getTipo()}</td>";
-                echo "<td>{$value->importancia()}</td>";
-                echo "<td><input type='button' id='fase2' value='Visualizar' class=\"btn btn-success\"/></td></tr>";
+            foreach ($clientes as $c){
+                foreach($c as $key=>$value) {
+                    echo "<tr><td class='chave'>{$value->getId()}</td>";
+                    echo "<td>{$value->getNome()}</td>";
+                    echo "<td>{$value->getTipo()}</td>";
+                    echo "<td>{$value->importancia()}</td>";
+                    echo "<td><input type='button' id='fase2' value='Visualizar' class=\"btn btn-success\"/></td></tr>";
+                }
             }
             ?>
         </table>

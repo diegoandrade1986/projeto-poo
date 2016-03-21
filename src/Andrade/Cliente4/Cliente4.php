@@ -6,13 +6,22 @@
  * Date: 04/03/16
  * Time: 10:39
  */
-namespace Andrade\Cliente3;
-class Cliente3
+namespace Andrade\Cliente4;
+class Cliente4
 {
     protected $nome;
     protected $idade;
     protected $cpf;
     protected $endereco;
+    protected $id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return mixed
@@ -84,8 +93,9 @@ class Cliente3
 
 
 
-    public function __construct($nome,$idade,$cpf,$endereco)
+    public function __construct($id,$nome,$idade,$cpf,$endereco)
     {
+        $this->id = $id;
         $this->nome = $nome;
         $this->idade = $idade;
         $this->cpf = $cpf;

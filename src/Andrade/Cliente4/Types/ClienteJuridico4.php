@@ -6,11 +6,11 @@
  * Date: 07/03/16
  * Time: 16:34
  */
-namespace Andrade\Cliente3\Types;
-use Andrade\Cliente3\Cliente3;
-use Andrade\Cliente3\Interfaces\InterfaceCliente3;
+namespace Andrade\Cliente4\Types;
+use Andrade\Cliente4\Cliente4;
+use Andrade\Cliente4\Interfaces\InterfaceCliente4;
 
-class ClienteJuridico3 extends Cliente3 implements InterfaceCliente3
+class ClienteJuridico4 extends Cliente4 implements InterfaceCliente4
 {
 
     protected $endCobranca;
@@ -42,9 +42,9 @@ class ClienteJuridico3 extends Cliente3 implements InterfaceCliente3
     }
 
 
-    public function __construct($nome, $idade, $cpf, $endereco, $endCobranca, $importancia)
+    public function __construct($id,$nome, $idade, $cpf, $endereco, $endCobranca, $importancia)
     {
-        parent::__construct($nome, $idade, $cpf, $endereco);
+        parent::__construct($id,$nome, $idade, $cpf, $endereco);
         $this->setEndCobranca($endCobranca);
         $this->setImportancia($importancia);
     }

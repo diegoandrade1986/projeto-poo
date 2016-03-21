@@ -15,6 +15,7 @@
                     <li><a href="listaCliente.php">Fase 1</a></li>
                     <li><a href="listaCliente_2.php">Fase 2</a></li>
                     <li><a href="listaCliente_3.php">Fase 3</a></li>
+                    <li><a href="listaCliente_4.php">Fase 4</a></li>
                 </ul>
             </div>
         </nav>
