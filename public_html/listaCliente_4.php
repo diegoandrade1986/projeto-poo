@@ -112,7 +112,7 @@ if (isset($_POST['desc'])) krsort($clientes);
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/modal_2.js"></script>
+    <script src="js/modal_4.js"></script>
     <script src="js/bootstrap.js"></script>
     </body>
 </html>

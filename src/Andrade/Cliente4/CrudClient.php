@@ -36,4 +36,23 @@ class CrudClient
 
     }
 
+    public function listaClientePeloId($id)
+    {
+        try{
+            $listar = $this->connect->prepare("SELECT * FROM cliente where id = :id;");
+            $listar->bindValue(":id",$id,\PDO::PARAM_INT);
+            $listar->execute();
+            $dados = $listar->fetch(\PDO::FETCH_OBJ);
+            if (count($dados) > 0) {
+                return $dados;
+            }else{
+                return false;
+            }
+
+        }catch(\PDOException $e){
+            echo "Erro ao listar Cliente Pelo Id" . $e->getMessage();
+        }
+
+    }
+
 }
